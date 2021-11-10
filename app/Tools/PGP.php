@@ -45,7 +45,7 @@ class PGP
     public static function verification($key,$name)
     {
         $verificationCode = Str::random(16); #Create verification code
-        $message = "---------------------------\nSUBMARINE ANONYMOUS MARKET\n---------------------------\nVERIFICATION CODE: $verificationCode";
+        $message = "-----------------------------\nMIDLAND CITY ANONYMOUS MARKET\n-----------------------------\nVERIFICATION CODE: $verificationCode";
 
         $encryptedMessage = self::encryptMessage($key, $message); #Encrypt message with PGP key received as parameter 
 

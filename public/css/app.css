@@ -95,15 +95,11 @@ button:active {
   width: 275px;
   height: 91px;
   color: #999;
+  margin-left: 10px;
 }
 
 .logo:hover {
   color: #333;
-}
-
-.logo-image {
-  float: left;
-  margin: 5px;
 }
 
 .logo-text {
