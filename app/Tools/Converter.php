@@ -65,4 +65,18 @@ class Converter
 
 		return number_format($amount/$moneroPrice, 5);
 	}
+
+	/**
+	 * takes the price from the seller's fee, converts it to Monero and holds that amount for one hour.
+	 * 
+	 * @return float
+	 */
+	public static function getSellerFee()
+	{
+		$sellerFee = \Cache::remember('seller_fee', 3600, function() {
+			return self::moneroConverter(config('general.seller_fee'));
+		});
+
+		return $sellerFee;
+	}
 }

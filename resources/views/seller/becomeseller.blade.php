@@ -9,8 +9,40 @@
     @include('includes.flash.validation')
     @include('includes.flash.error')
     <div class="h2 mb-15">Become a seller</div>
-    <div class="footnote">{{ $user->become_monero_wallet }}</div>
-    <p>Get your products to your customers quickly, easily, and anonymously as a Silk Road independent seller.</p>
+    <table class="zebra table-space">
+        <thead>
+            <tr>
+                <th class="text-left">
+                    payment wallet
+                    <div class="info-wrapper float-right">
+                        <div class="info-folder">
+                            <div class="info-icon">?</div>
+                            <div class="info-message">The current fee to become a supplier is <strong>${{ config('general.seller_fee')}}</strong>. We will refund this amount to you in the future.</div>
+                        </div>
+                    </div>
+                </th>
+                <th>total sent</th>
+                <th>to pay</th>
+                <th>paid</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="float-left"><input type="text" value="{{ $user->become_monero_wallet }}" style="font-family: Courier; font-size: 90%; background-color: #fff; color: #000; font-weight: bold; width: 490px" disabled>
+                </td>
+                <td>
+                    {{ $totalReceived }}
+                </td>
+                <td>
+                    {{ $sellerFee }}
+                </td>
+                <td>
+                    <span class="flashdata flashdata-warning">{{ $user->paidSellerFee() ? 'yes' : 'no' }}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Get your products to your customers quickly, easily, and anonymously as a Midland City independent seller.</p>
     <div class="container" style="text-align: justify">
         <div class="h3 mb-20">Seller contract</div>
         <ul>

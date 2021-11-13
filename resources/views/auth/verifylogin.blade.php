@@ -17,8 +17,13 @@
 		</div>
 		<textarea rows="12" cols="42" disabled>{{ session()->get('encrypted_message') }}</textarea>
 		<label for="verification_code">verification code</label>
-		<input type="text" id="verification_code" name="verification_code">
-		<button type="submit">submit</button>
+		<input type="text" id="verification_code" name="verification_code" style="width: 138px">
+		<div class="inblock">
+			<button type="submit">submit</button>
+		</div>
+		<div class="inblock">
+			<a href="{{ route('logout') }}"><button type="button">logout</button></a>
+		</div>
 	</form>
 </div>
 

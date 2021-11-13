@@ -81,7 +81,6 @@ class CheckoutRequest extends FormRequest
 
             return redirect()->route('orders', ['status' => 'waiting']);
         } catch (\Exception $exception) {
-            dd($exception);
             throw new \Exception('Oops... An error has occurred!');
         }
     }

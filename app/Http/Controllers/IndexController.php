@@ -52,7 +52,7 @@ class IndexController extends Controller
                 $query->where('ships_to', $ships_to);
             if ($ships_from)
                 $query->where('ships_from', $ships_from);
-            })->orderBy('created_at', $order_by);
+            })->orderBy('created_at', $order_by)->where('deleted', false);
 
 		#Get all filters
 		$filters = $request->all();

@@ -41,14 +41,11 @@ class BecomeSellerRequest extends FormRequest
         #Updates authenticated user role for seller
         $user = auth()->user();
 
-        #Fee become seller
-        $fee = Converter::moneroConverter(config('general.seller_fee'));
-
         if (is_null($user->pgp_key)) {
             throw new \Exception('You must have a pgp key linked to your account!');
         }
 
-        if (\Monerod::getTotalReceived($user->become_monero_wallet) < $fee) {
+        if (!$user->paidSellerFee()) {
             throw new \Exception('Deposit the required amount at the address!');
         }
 

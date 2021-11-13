@@ -501,4 +501,21 @@ class User extends Authenticatable
 
         return $totalDisputes;
     }
+
+    /**
+     * Check if the user has paid a seller fee
+     * 
+     * @return bool
+     */
+    public function paidSellerFee() : bool
+    {
+        $balanceWallet = \Monerod::getTotalReceived($this->become_monero_wallet);
+        $sellerFee = \App\Tools\Converter::getSellerFee(); #in XMR
+
+        if ($balanceWallet >= $sellerFee) {
+            return true;
+        }
+
+        return false;
+    }
 }

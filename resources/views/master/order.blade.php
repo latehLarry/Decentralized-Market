@@ -10,7 +10,7 @@
 	@include('includes.flash.error')
 	<div class="h2 mb-15">Order - <a href="{{ route('product', ['product' => $order->product_id]) }}">{{ $order->product->name }}</a></div>
 	<div class="title">
-		<div class="h3 inblock" style="width:63%">Buyer statistics - {{ $order->buyer->username }}</div>
+		<div class="h3 inblock" style="width: 60%">Buyer statistics - {{ $order->buyer->username }}</div>
 		<div class="h3 inblock">Order details</div>
 	</div>
 	<div class="inblock" style="vertical-align: top">
@@ -23,7 +23,7 @@
 			@endif
 		</div>
 	</div>
-	<div class="inblock">
+	<div class="inblock" style="width: 50%">
 		@include('includes.components.buyerstats', ['user' => $user])
 	</div>
 	<div class="inblock" style="vertical-align: top">
@@ -72,8 +72,8 @@
 				<tbody>
 					<tr>
 						<td><input type="text" value="{{ $order->escrow_monero_wallet }}" style="font-family: Courier; font-size: 90%; background-color: #fff; color: #000; font-weight: bold; width: 261px" disabled></td>
-						<td>{{ $totalSent }}</td>
-						<td>{{ $toPay }}</td>
+						<td class="text-center">&#8499;{{ $totalSent }}</td>
+						<td class="text-center">&#8499;{{ $toPay }}</td>
 						<td><div class="flashdata flashdata-warning">{{ $order->paidOrder() ? 'yes' : 'no' }}</div></td>
 					</tr>
 				</tbody>
@@ -94,9 +94,9 @@
 				<div class="h3 mb-10">Note</div>
 				@if($order->waiting())
 					@if($order->isBuyer())
-						<span>Pay for the purchase and wait for the seller to accept your order. If the seller does not accept, your money will be refunded. <strong>Purchases with "waiting" status are canceled within two days.</strong></span>
+						<span>Pay for the purchase and wait for the seller to accept your order. If the seller does not accept, your money will be refunded. <strong>Orders with the status "waiting" are automatically canceled within two days.</strong></span>
 					@else
-						<span>You can only accept the order after the buyer sends the money to the payment wallet. <strong>Purchases with "waiting" status are canceled within two days.</strong></span>	
+						<span>You can only accept the order after the buyer sends the money to the payment wallet. <strong>Orders with the status "waiting" are automatically canceled within two days.</strong></span>	
 					@endif
 					<div class="actions mt-20">
 						@if(!$order->isBuyer())

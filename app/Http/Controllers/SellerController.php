@@ -18,12 +18,11 @@ class SellerController extends Controller
 		#Get auth user
 		$user = auth()->user();
 
-		$price = Converter::moneroConverter(config('seller_fee'));
-
 		if (!$user->isSeller()) {
 			return view('seller.becomeseller', [
 				'user' => $user,
-				'price' => $price
+				'totalReceived' => \Monerod::getTotalReceived($user->become_monero_wallet),
+				'sellerFee' => Converter::getSellerFee()
 			]);
 		}
 		

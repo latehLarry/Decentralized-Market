@@ -17,8 +17,11 @@
 				<label for="pgp_key">PGP key</label>
 			</div>
 			<textarea id="pgp_key" name="pgp_key" cols="50" rows="12"></textarea>
-			<div class="mt-10">
+			<div class="inblock">
 				<button type="submit">next step</button>
+			</div>
+			<div class="inblock">
+				<a href="{{ route('logout') }}"><button type="button">logout</button></a>
 			</div>
 		</form>
 	@else
@@ -33,10 +36,14 @@
 			<div class="label mt-10">
 				<label for="verification_code">verification code</label>
 			</div>
-			<input type="text" id="verification_code" name="verification_code">
+			<input type="text" id="verification_code" name="verification_code" style="width: 138px">
 			<div class="mt-10">
-				<a href="{{ route('cancelsetpgpkey') }}">cancel</a>
-				<button type="submit">confirm</button>
+				<div class="inblock">
+					<a href="{{ route('cancelsetpgpkey') }}"><button type="button">cancel</button></a>
+				</div>
+				<div class="inblock">
+					<button type="submit">confirm</button>
+				</div>
 			</div>
 		</form>
 	@endif

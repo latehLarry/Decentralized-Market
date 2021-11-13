@@ -99,23 +99,27 @@ class Monerod
 	 */
 	public function getTotalReceived($address)
 	{
-		#Get payment ID
-		$result = $this->monerod->split_integrated_address($address);
-		$paymentID = $result['payment_id'];
+		try {
+			#Get payment ID
+			$result = $this->monerod->split_integrated_address($address);
+			$paymentID = $result['payment_id'];
 
-		#Set total received
-		$totalReceived = 0.00000;
+			#Set total received
+			$totalReceived = 0.00000;
 
-		#Get all payments
-		$payments = $this->monerod->get_payments($paymentID);
+			#Get all payments
+			$payments = $this->monerod->get_payments($paymentID);
 
-		if (!empty($payments['payments'])) {
-			foreach ($payments['payments'] as $payment) {
-				$totalReceived += $payment['amount'];
+			if (!empty($payments['payments'])) {
+				foreach ($payments['payments'] as $payment) {
+					$totalReceived += $payment['amount'];
+				}
 			}
-		}
 
-		return number_format(($totalReceived*0.000000000001), 5);
+			return number_format(($totalReceived*0.000000000001), 5);
+		} catch(\Exception $exception) {
+			return number_format(0, 5);
+		}
 	}
 
 	/**
