@@ -10,7 +10,8 @@
 <div style="text-align: center; margin: 0 auto; margin-top: 50px">
 	<div class="flashdata mt-20">Thank you for submitting a report!<br>You may add additional details below or simply close this tab.</div>
 </div>
-<div class="master" style="width: 20%">
+<div class="master" style="width: 300px">
+	<div class="h3 mb-20">Report product</div>
 	<form action="{{ route('post.report', ['product' => $product->id]) }}" method="post">
 		@csrf
 		@foreach(config('general.reporting_causes') as $index => $cause)
@@ -23,7 +24,7 @@
 		@endforeach
 		<div class="mt-20">
 			<label for="message">optional message</label>
-			<textarea id="message" name="message" rows="10" style="width: 100%"></textarea>
+			<textarea id="message" name="message" rows="10" cols="34"></textarea>
 		</div>
 		@include('includes.forms.captcha')
 	</form>

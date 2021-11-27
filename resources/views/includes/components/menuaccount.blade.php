@@ -5,7 +5,7 @@
             <li><a href="{{ route('accountindex') }}">Account index</a></li>
             <li><a href="{{ route('statistics') }}">Account statistics</a></li>
             <li><a href="{{ route('history') }}">Account history</a></li>
-            <li><a href="{{ route('settings') }}">Settings</a></li>
+            <li><a href="{{ route('settings') }}">Account settings</a></li>
             <li><a href="{{ route('affiliate') }}">Affiliate system</a></li>
             @seller
             <li><a href="{{ route('seller.dashboard') }}">Seller dashboard</a></li>

@@ -56,9 +56,14 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="encrypted">Encrypt message with receiver's PGP key?</label>
-            <input type="radio" id="encrypted" name="encrypted" value="1">yes
-            <input type="radio" id="encrypted" name="encrypted" value="0" checked>no
+            <label for="encrypted">Auto encrypt</label>
+            <input type="checkbox" id="encrypted" name="encrypted" value="1">
+            <div class="info-wrapper" style="margin-left: 10px;">
+                <div class="info-folder">
+                    <div class="info-icon">?</div>
+                    <div class="info-message">The message will automatically be encrypted with the PGP key of the receiving user.</div>
+                </div>
+            </div> 
         </div>
         @include('includes.forms.captcha')
     </form>

@@ -5,7 +5,7 @@ return [
   /**
    * Fee required to become a seller
    */
-  'seller_fee' => '200',
+  'seller_fee' => '500',
 
   /**
    * Commission fee
@@ -20,9 +20,9 @@ return [
    */
   'monero' => [
     'host' => '127.0.0.1',
-    'port' => '1800',
-    'user' => null,
-    'password' => null
+    'port' => '28088',
+    'user' => 'midlandcity_node',
+    'password' => 'lwOyKgNOnN4GrFkUJf1M6qtyUAR6fXYF'
   ],
 
   /**

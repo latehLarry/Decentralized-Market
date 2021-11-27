@@ -9,7 +9,7 @@
 	@include('includes.flash.validation')
 	@include('includes.flash.success')
 	@include('includes.flash.error')
-	<div class="h2 mb-15">Settings</div>
+	<div class="h2 mb-15">Account Settings</div>
 	<div class="container mb-20">
 		<div class="info-wrapper float-right">
 			<div class="info-folder">

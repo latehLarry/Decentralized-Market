@@ -74,6 +74,38 @@ button:active {
   top: 1px;
 }
 
+.auth-header {
+  margin: auto;
+  padding: auto;
+  margin-top: 50px;
+  width: 275px;
+  height: 91px;
+  font-weight: 700px;
+  text-align: center;
+}
+
+.auth-header-logo {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.white {
+  filter: invert(1);
+}
+
+.auth-header-text {
+  display: inline-block;
+  font-size: 37px;
+  text-shadow: 1px 1px 2px #686868;
+  padding-bottom: 4px;
+  color: #fff;
+}
+
+.auth-header-text:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .content {
   min-height: 750px;
   padding: 10px 10px 38px 10px;
@@ -95,7 +127,13 @@ button:active {
   width: 275px;
   height: 91px;
   color: #999;
-  margin-left: 10px;
+  margin-left: 3px;
+}
+
+.logo-image {
+  float: left;
+  width: 50px;
+  height: 91px;
 }
 
 .logo:hover {
@@ -105,13 +143,13 @@ button:active {
 .logo-text {
   float: left;
   font-weight: bold;
-  margin: 15px 0px 0px 5px;
+  margin: 15px 0px 0px 0px;
   position: relative;
   bottom: 3px;
 }
 
 .logo-title {
-  font-size: 37px;
+  font-size: 34px;
   color: #333;
   text-shadow: 1px 1px 2px #CCC;
 }

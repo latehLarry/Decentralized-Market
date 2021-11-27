@@ -5,6 +5,7 @@
 @section('no-content')
 
 @include('includes.flash.error')
+@include('includes.components.logo')
 <div class="master" style="width: 30%">
 	<div class="h3">Two-factor verification (2FA)</div>
 	<form action="{{ route('post.verifylogin') }}" method="post">

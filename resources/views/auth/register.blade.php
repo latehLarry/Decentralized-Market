@@ -5,7 +5,9 @@
 @section('no-content')
 
 @include('includes.flash.error')
+@include('includes.components.logo')
 <div class="master" style="width: 300px">
+	<div class="h3 mb-20">Register</div>
 	<form action="{{ route('post.register') }}" method="post">
 		@csrf
 		<div class="form-group">

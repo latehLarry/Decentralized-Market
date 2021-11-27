@@ -72,8 +72,8 @@
 				<tbody>
 					<tr>
 						<td><input type="text" value="{{ $order->escrow_monero_wallet }}" style="font-family: Courier; font-size: 90%; background-color: #fff; color: #000; font-weight: bold; width: 261px" disabled></td>
-						<td class="text-center">&#8499;{{ $totalSent }}</td>
-						<td class="text-center">&#8499;{{ $toPay }}</td>
+						<td class="text-center">XMR {{ $totalSent }}</td>
+						<td class="text-center">XMR {{ $toPay }}</td>
 						<td><div class="flashdata flashdata-warning">{{ $order->paidOrder() ? 'yes' : 'no' }}</div></td>
 					</tr>
 				</tbody>

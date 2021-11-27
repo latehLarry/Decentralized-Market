@@ -32,7 +32,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8|max:80|confirmed',
             'pin' => 'required|digits:6|confirmed',
             'reference_code' => 'nullable|exists:users,reference_code',
-            //'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha'
         ];
     }
 

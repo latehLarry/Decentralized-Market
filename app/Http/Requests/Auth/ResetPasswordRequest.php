@@ -30,7 +30,7 @@ class ResetPasswordRequest extends FormRequest
             'username' => 'nullable',
             'verification_code' => 'nullable',
             'new_password' => 'nullable|min:8|max:80|confirmed',
-            //'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha'
         ];
     }
     

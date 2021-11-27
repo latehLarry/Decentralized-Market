@@ -6,6 +6,7 @@
 
 @include('includes.flash.success')
 @include('includes.flash.error')
+@include('includes.components.logo')
 <div class="master" style="width: 306px">
 	<div class="h3">Reset password</div>
 	<div class="footnote mb-10">You have requested to change the password.</div>

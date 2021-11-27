@@ -15,11 +15,11 @@
 			<td>{{ $user->totalOrdersCompleted() }}</td>
 		</tr>
 		<tr>
-			<td style="text-align: left">total spent(USD)</td>
-			<td>&#8499;{{ $user->totalSpent($user, 1) }}</td>
-			<td>&#8499;{{ $user->totalSpent($user, 3) }}</td>
-			<td>&#8499;{{ $user->totalSpent($user, 12) }}</td>
-			<td>&#8499;{{ $user->totalSpent($user) }}</td>
+			<td style="text-align: left">total spent</td>
+			<td>XMR {{ $user->totalSpent($user, 1) }}</td>
+			<td>XMR {{ $user->totalSpent($user, 3) }}</td>
+			<td>XMR {{ $user->totalSpent($user, 12) }}</td>
+			<td>XMR {{ $user->totalSpent($user) }}</td>
 		</tr>
 		<tr>
 			<td style="text-align: left">dispute rate</td>

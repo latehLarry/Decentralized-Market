@@ -8,6 +8,8 @@ use App\Models\Order;
 
 trait Payment
 {
+	private $commissionAmount;
+
 	/**
 	 * Remove the market commission amount from the total price
 	 * @param $amount
@@ -16,17 +18,16 @@ trait Payment
 	 */
 	public function comission($amount)
 	{
-		#Set variable
-		$comissionAmount = 0;
-
 		#Purchases greater than $100 give a 3% commission and purchases less than $100 give a 5% commission
 		if ($amount > Converter::moneroConverter(100)) {
-			$comissionAmount = $amount*config('general.market_fee.min');
+			$this->comissionAmount = $amount*config('general.market_fee.min');
 		} else {
-			$commissionAmount = $amount*config('general.market_fee.max');
+			$this->commissionAmount = $amount*config('general.market_fee.max');
 		}
 
-		return ($amount-$comissionAmount);
+		$result = $amount-$this->comissionAmount;
+
+		return $result;
 	}
 
 	/**
@@ -57,6 +58,14 @@ trait Payment
 			$walletReceiver = $order->seller->monero_wallet;
 
 			\Monerod::transfer($amount, $walletReceiver);
+
+			#Affiliate payment
+			if ($order->buyer->referenced_by) {
+				$amount = $this->comissionAmount/2;
+				$walletReceiver = $order->seller->monero_wallet;
+
+				\Monerod::transfer($amount, $walletReceiver);
+			}
 		} catch (\Exception $exception) {
 			session()->flash('error', $exception->getMessage());
 		}
@@ -75,6 +84,14 @@ trait Payment
 			$walletReceiver = $order->seller->monero_wallet;
 
 			\Monerod::transfer($amount, $walletReceiver);
+
+			#Affiliate payment
+			if ($order->buyer->referenced_by) {
+				$amount = $this->comissionAmount/2;
+				$walletReceiver = $order->seller->monero_wallet;
+
+				\Monerod::transfer($amount, $walletReceiver);
+			}
 		} catch (\Exception $exception) {
 			session()->flash('error', $exception->getMessage());
 		}

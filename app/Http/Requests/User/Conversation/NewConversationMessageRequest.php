@@ -28,8 +28,8 @@ class NewConversationMessageRequest extends FormRequest
     {
         return [
             'message' => 'required|max:1000',
-            'encrypted' => 'required|boolean',
-            //'captcha' => 'required|captcha'
+            'encrypted' => 'nullable|boolean',
+            'captcha' => 'required|captcha'
         ];
     }
 
@@ -63,8 +63,8 @@ class NewConversationMessageRequest extends FormRequest
         $conversationMessage->issuer_id = $user->id; #The authenticated user who is the sender of the message
         $conversationMessage->receiver_id = $receiver->id;
         $conversationMessage->conversation_id = $conversation->id;
-        $conversationMessage->message = $this->encrypted == true ? Crypt::encryptString(PGP::encryptMessage($receiver->pgp_key, $this->message)) 
-                                                                 : Crypt::encryptString($this->message);
+        $conversationMessage->message = $this->encrypted ? Crypt::encryptString(PGP::encryptMessage($receiver->pgp_key, $this->message)) 
+                                                         : Crypt::encryptString($this->message);
         $conversationMessage->save();
 
         return redirect()->route('conversationmessages', ['conversation' => $conversation->id]);

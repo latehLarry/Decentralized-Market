@@ -6,7 +6,9 @@
 
 @include('includes.flash.success')
 @include('includes.flash.error')
+@include('includes.components.logo')
 <div class="master">
+	<div class="h3 mb-20">Login</div>
 	<form action="{{ route('post.login') }}" method="post">
 		@csrf
 		<div class="form-group">
