@@ -20,11 +20,11 @@ class CategorySeeder extends Seeder
         $benzos->slug = 'benzos';
         $benzos->save();
 
-            $benzos = new Category();
+            $pills = new Category();
             $pills->parent_category = $benzos->id;
-            $benzos->name = 'Pills';
-            $benzos->slug = 'pills';
-            $benzos->save();
+            $pills->name = 'Pills';
+            $pills->slug = 'pills';
+            $pills->save();
 
             $powder = new Category();
             $powder->parent_category = $benzos->id;
