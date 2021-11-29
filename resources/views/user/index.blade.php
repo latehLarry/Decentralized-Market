@@ -19,7 +19,7 @@
             <li>Orders with shipped status are finalized after 30 days.</li>
             <li>Help requests marked as closed are deleted after 30 days.</li>
         </ul>
-        If you want to know more information about how the market works and how to use it, see the <a href="#"><strong>wiki</strong></a>.
+        If you want to know more information about how the market works and how to use it, see the <a href="{{ config('general.wiki_link') }}" target="_blank"><strong>wiki</strong></a>.
     </div>
     <div class="h2 mb-15">Account index</div>
     <div class="container mb-20">
