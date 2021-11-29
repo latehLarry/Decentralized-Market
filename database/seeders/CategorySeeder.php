@@ -182,11 +182,11 @@ class CategorySeeder extends Seeder
             $shrooms->slug = 'shrooms';
             $shrooms->save();
 
-            $2cb = new Category();
-            $2cb->parent_category = $psychedelics->id;
-            $2cb->name = '2C-B';
-            $2cb->slug = '2c-b';
-            $2cb->save();
+            $twocb = new Category();
+            $twocb->parent_category = $psychedelics->id;
+            $twocb->name = '2C-B';
+            $twocb->slug = '2c-b';
+            $twocb->save();
 
 
         ########### STEROIDS
