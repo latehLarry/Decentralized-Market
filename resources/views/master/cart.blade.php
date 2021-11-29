@@ -55,7 +55,7 @@
 		<div class="info-wrapper float-right">
 			<div class="info-folder">
 				<div class="info-icon">?</div>
-				<div class="info-message">Your address will be encrypted with the sellers' PGP key, ensuring that only they will have access to your information! See how we protect your identity in the <a href="#"><strong>buyer's guide</strong></a>.</div>
+				<div class="info-message">Your address will be encrypted with the sellers' PGP key, ensuring that only they will have access to your information! See how we protect your identity in the <a href="{{ config('general.wiki_link') }}" target="_blank"><strong>buyer's guide</strong></a>.</div>
 			</div>
 		</div>
 		<form action="{{ route('post.checkout') }}" method="post">
