@@ -25,10 +25,9 @@ trait OrderTrait
 
 		$buyerId = $order->buyer->id;
 		$orderId = $order->id;
-		$sellerUsername = $order->seller->username;
 		$link = route('order', ['order' => $order->id]);
 
-		$this->createNotification($buyerId, "Your order <strong>#$orderId</strong> has been accepted by $sellerUsername!", $link);
+		$this->createNotification($buyerId, "Your order <strong>#$orderId</strong> has been accepted!", $link);
 	}
 
 	/**
@@ -112,7 +111,9 @@ trait OrderTrait
 		$order->status = 'disputed';
 		$order->save();
 
-		$this->cancelPayment($order);
+		if (!$order->delivered()) {
+			$this->cancelPayment($order);
+		}
 
 		$dispute = new Dispute();
 		$dispute->order_id = $order->id;

@@ -74,6 +74,11 @@ button:active {
   top: 1px;
 }
 
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
 .auth-header {
   margin: auto;
   padding: auto;
@@ -82,6 +87,11 @@ button:active {
   height: 91px;
   font-weight: 700px;
   text-align: center;
+}
+
+.auth-header a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 .auth-header-logo {
@@ -99,11 +109,6 @@ button:active {
   text-shadow: 1px 1px 2px #686868;
   padding-bottom: 4px;
   color: #fff;
-}
-
-.auth-header-text:hover {
-  color: #fff;
-  text-decoration: none;
 }
 
 .content {
@@ -437,7 +442,7 @@ button:active {
 }
 
 .subcategory-link {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .notices {

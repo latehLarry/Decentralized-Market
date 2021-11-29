@@ -34,7 +34,7 @@
 			ships from: {{ $product->shipsFrom() }}<br>
 			ships to: {{ $product->shipsTo() }}<br>
 			finalize early (present): <strong>{{ $product->seller->finalizeEarly() == true ? 'yes' : 'no' }}</strong><br>
-			category: <a href="{{ route('category', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a><br>
+			category: @foreach($product->category->parents() as $pc) <a href="{{ route('category', ['slug' => $pc->slug]) }}">{{ $pc->name }}</a> &rarr; @endforeach <a href="{{ route('category', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a>
 			<form action="{{ route('post.favorites', ['product' => $product->id]) }}" method="post" class="mt-10">
 				@csrf
 				<button type="submit">{{ auth()->user()->isFavorite($product) ? 'remove' : 'add' }} to favorites</button>
@@ -98,7 +98,7 @@
 			</tr>
 			@empty
 			<tr>
-				<td colspan="5">Humm... Looks like this product doesn't have any feedback yet.</td>
+				<td colspan="5">Humm... Looks like this product doesn't have any reviews yet.</td>
 			</tr>
 			@endforelse
 			<tr>

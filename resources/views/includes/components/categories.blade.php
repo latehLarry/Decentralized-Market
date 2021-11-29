@@ -13,9 +13,15 @@ $categories = \App\Models\Category::roots();
       <div class="categories-body">
          @foreach($categories as $category)
             <div class="category-link">
-               <a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a><span class="footnote"> {{ $category->totalProducts() }}</span>
                @if($category->isParent())
+               <details @browsing($category) open @endif>
+                  <summary>
+                     <a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a><span class="footnote"> {{ $category->totalProducts() }}</span>
+                  </summary>
                   @include('includes.components.subcategories', ['subcategories' => $category->subcategories])
+               </details>
+               @else
+                  <a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a><span class="footnote"> {{ $category->totalProducts() }}</span>
                @endif
             </div>
          @endforeach

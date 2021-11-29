@@ -60,7 +60,7 @@
 		<thead>
 			<th>featured image</th>
 			<th>category</th>
-			<th>product</th>
+			<th>name</th>
 			<th>from</th>
 			<th>ships to</th>
 			<th>ships from</th>
@@ -107,7 +107,7 @@
 			</tr>
 			@empty
 			<tr>
-				<td colspan="6">Humm... Looks like this seller has no feedbacks.</td>
+				<td colspan="6">Humm... Looks like this seller has no reviews.</td>
 			</tr>
 			@endforelse
 			<tr>

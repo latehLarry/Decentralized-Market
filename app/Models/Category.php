@@ -71,10 +71,54 @@ class Category extends Model
      */
     public function isParent() : bool
     {
-        if (isset($this->subcategories)) {
+        if (count($this->subcategories) > 0) {
             return true;
         }
         
         return false;
+    }
+
+
+    /**
+     * Get parent
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_category', 'id');
+    }
+
+
+    /**
+     * Parents
+     *
+     * @return Illuminate\Collections\Collection
+     */
+    public function parents()
+    {
+        $ancestorsCollection = collect();
+        $currentParent = $this->parent;
+
+        while ($currentParent != null){
+            $ancestorsCollection->push($currentParent);
+            $currentParent = $currentParent->parent;
+        }
+
+        return $ancestorsCollection->reverse();
+    }
+
+
+    public function allSubcategories()
+    {
+        $subcategories = $this->subcategories;
+
+        $allSubcategories = new Collection($subcategories);
+
+        foreach ($subcategories as $subcategory) {
+            $allSubcategories = $allSubcategories->merge($subcategory->allSubcategories());
+        }
+        
+        return $allSubcategories;
     }
 }

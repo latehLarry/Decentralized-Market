@@ -1,6 +1,6 @@
 @extends('master.main')
 
-@section('title', 'Settings')
+@section('title', 'Account settings')
 
 @section('content')
 

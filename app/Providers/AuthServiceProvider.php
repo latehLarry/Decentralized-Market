@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('product', function(User $user) {
-            return $user->isSeller() || $user->isModerator() || $user->isAdmin();
+            return $user->isSeller() || $user->isModerator() || $user->isAdmin() && $order->deleted == false;
         });
 
         Gate::define('update-product', function(User $user, Product $product) {
@@ -51,7 +51,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('finalizearly', function(User $user, Order $order) {
-            return $user->id == $order->buyer_id && $order->sent() && $order->buyer->finalizearly() && $order->deleted == false;
+            return $user->id == $order->buyer_id && $order->shipped() && $order->buyer->finalizearly() && $order->deleted == false;
         });
     }
 }

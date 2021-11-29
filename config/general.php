@@ -33,12 +33,12 @@ return [
   /**
    * After how long will orders with the status "shipped" be finalized
    */
-  'days_complete_orders' => 60,
+  'days_complete_orders' => 30,
     
   /**
    * After how many days old completed orders will be deleted
    */
-  'days_delete_old_order' => 30,
+  'days_delete_old_order' => 7,
     
   /**
    * After how many days old messages will be destroyed
@@ -83,6 +83,13 @@ return [
   'order_by' => [
       'newest',
       'oldest'
-  ]
+  ],
+
+  /**
+   * Footer links
+   */
+  'dread_forum_link' => null,
+
+  'wiki_link' => null
 
 ];

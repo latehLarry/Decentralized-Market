@@ -49,6 +49,26 @@
 					<small class="text-danger">{{ $errors->first('seller_fee') }}</small>
 				</div>
 				@enderror
+				<div class="label">
+					<label for="seller_fee">Dread forum</label>
+				</div>
+				<input type="text" id="dread_forum_link" name="dread_forum_link" value="{{ $dreadForumLink }}">
+				<div class="footnote">Set dread forum link</div>
+				@error('dread_forum_link')
+				<div class="error">
+					<small class="text-danger">{{ $errors->first('dread_forum_link') }}</small>
+				</div>
+				@enderror
+				<div class="label">
+					<label for="seller_fee">Wiki</label>
+				</div>
+				<input type="text" id="wiki_link" name="wiki_link" value="{{ $wikiLink }}">
+				<div class="footnote">Set wiki link</div>
+				@error('wiki_link')
+				<div class="error">
+					<small class="text-danger">{{ $errors->first('wiki_link') }}</small>
+				</div>
+				@enderror
 			</div>
 			<button type="submit">change settings</button>
 		</form>

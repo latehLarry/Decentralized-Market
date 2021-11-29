@@ -20,7 +20,9 @@ class AdminController extends Controller
 			'totalEmployeers' => User::where('moderator', true)->orWhere('admin', true)->count(),
 			'totalProducts' => Product::count(),
 			'totalMoneros' => \Monerod::getBalance(),
-			'sellerFee' => config('general.seller_fee')
+			'sellerFee' => config('general.seller_fee'),
+			'dreadForumLink' => config('general.dread_forum_link'),
+			'wikiLink' => config('general.wiki_link')
 		]);
 	}
 
@@ -50,10 +52,16 @@ class AdminController extends Controller
 	{
 		$request->validate([
 			'seller_fee' => 'required|numeric|min:1',
+			'dread_forum_link' => 'required',
+			'wiki_link' => 'required'
 		]);
 
 		#Change the fee amount to become a seller
 		$this->editConfig('general.seller_fee', $request->seller_fee, 'general', 'general.php');
+
+		#Edit footer links
+		$this->editConfig('general.dread_forum_link', $request->dread_forum_link, 'general', 'general.php');
+		$this->editConfig('general.wiki_link', $request->wiki_link, 'general', 'general.php');
 
 		session()->flash('success', 'Market settings have been changed successfully!');
 		return redirect()->route('admin.dashboard');

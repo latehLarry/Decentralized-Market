@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\{Schema,Blade};
 use Illuminate\Support\Collection;
-
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +39,22 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::if('admin', function() {
             return auth()->user()->isAdmin();
+        });
+
+        Blade::if('browsing', function(Category $category) {
+            $lastPartUrl = request()->segment(count(request()->segments()));
+
+            if ($category->slug === $lastPartUrl) {
+                return true;
+            }
+
+            foreach ($category->allSubcategories() as $subcategory) {
+                if ($subcategory->slug === $lastPartUrl) {
+                    return true;
+                }    
+            }
+
+            return false;
         });
 
         /**
